@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ProyectoASF.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="creando-un-juego-con-phaser">Creando un juego con Phaser</h1>
+<h4 id="para-crear-el-juego-utilizaremos-varias-herramientas">Para crear el juego utilizaremos varias herramientas</h4>
+<ol>
+<li>Visual Code Studio</li>
+<li>Phaser 3</li>
+<li>Photoshop cs6</li>
+<li>GitHub</li>
+</ol>
+<p>Para comenzar este proyecto, instalaremos en nuestra máquina el programa Visual Code Studio, dentro del mismo tendremos varias extensiones que podremos instalar, las cuales enumeraré a continuación:</p>
+<ul>
+<li>Beautify: sirve para dejar el código algo más bonito.</li>
+<li>Live Server: funciona como un servidor para poder ver cómo va tu proyecto.</li>
+<li>Spanish Language Pack for Visual Studio Code: sirve para poner el idioma en español.</li>
+<li>Markdown All in One: para documentar el proyecto.</li>
+<li>Markdown PDF: para poder exportar el trabajo.</li>
+</ul>
+<p>Tras realizar la instalación de todas las extensiones, procederemos a realizar la instalación de phaser; para ello creamos la carpeta en la que haremos nuestro proyecto y la incluiremos dentro del programa arrastrándola, creamos un html simple y abriremos la terminal del Visual Code Studio en la cuál pondremos</p>
+<pre class="hljs"><code><div>npm init -y
+</div></code></pre>
+<p>para poder activar el npm, posteriormente se nos creará el archivo package.json</p>
+<p>Una vez realizado esto, procederemos a instalar el phaser3 del mismo modo que el npm (en la terminal de Visual Code Studio) con el comando:</p>
+<pre class="hljs"><code><div>npm install --save phaser
+</div></code></pre>
+<p>Con esto se nos crearán varias carpetas para poder empezar a trabajar.</p>
+<p>También procederemos a instalar Photoshop cs6 u otro programa de edición y/o creación de imágenes para poder realizar los diseños de nuestros juegos.</p>
+<p>Otro punto a tener en cuenta es qué queremos crear, porque de nada vale empezar sin tener un objetivo medianamente claro, en mi caso quise hacer guiño al primer juego de la historia, es decir, el pong y también al primer juego que yo mismo he jugado: el snake.</p>
+<p>Teniendo esto claro, lo que haremos será definir qué queremos tener para ambos juegos.</p>
+<p>Una vez creadas las imágenes, se incluirán en una de las carpetas creadas llamada &quot;assets&quot;.</p>
+<p>Mostraré a continuación las que he escogido y/o creado para el pong:</p>
+<ul>
+<li>La pelota:
+<img src="assets/ball.png" alt="Pelota"></li>
+<li>Las palas: <img src="assets/left_pallete.png" alt="Pala1"><img src="assets/right_pallete.png" alt="Pala2"></li>
+<li>El campo: <img src="assets/tenis.jpg" alt="Campo"></li>
+</ul>
+<p>Con eso tenemos el material para el pong; también pondré los del snake</p>
+<ul>
+<li>El cuerpo: <img src="snake-final/snake/assets/body.png" alt="Cuerpo"></li>
+<li>La comida: <img src="snake-final/snake/assets/food.png" alt="Comida"></li>
+<li>El Tablero: <img src="snake-final/snake/assets/tablero.png" alt="Tablero"></li>
+<li>La fuente: <img src="snake-final/snake/assets/font/font.png" alt="Fuente"></li>
+</ul>
+<p>Teniendo ya los materiales, podremos comenzar nuestro trabajo en el código.</p>
+<h1 id="pong">Pong</h1>
+<p>Comenzaremos por el pong; el html lo haremos de la siguiente forma:</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Pong&lt;/title&gt;
+    &lt;style&gt;
+        main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        #contenedor {
+            margin-top: 50px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;
+        &lt;div id=&quot;contenedor&quot;&gt;&lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;script src=&quot;./node_modules/phaser/dist/phaser.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./src/init.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<p>¿Qué vemos aquí?
+Bien, principalmente el código general del html es sencillo dado que tiene la declaración doctype, las etiquetas habituales pero sí agregamos un estilo con diferentes características, un contenedor con margen y dentro del body agregamos un div para el contenedor y también dos scripts en el que se recogerán el phaser.js (se crea automáticamente al instalar el phaser) y otro para el init.js que es una parte del trabajo que realizaremos.</p>
+<p>Por todo lo demás, no necesitaremos tocar el html.</p>
+<p>Ahora tenemos que trabajar en el contenido del src: el bootloader.js y el init.js (después también tendremos que trabajar dentro de la carpeta gameObjets con palas.js y en la carpeta scenes con scene_play.js)</p>
+<p>Bien, para comenzar, trabajaremos con el bootloader en el cuál dejaremos el código de la siguiente manera:</p>
+<pre class="hljs"><code><div>class Bootloader extends Phaser.Scene {
+    constructor() {
+        super({key: &quot;Bootloader&quot;});
+    }
+    preload() {
+        this.load.on(&quot;complete&quot;, () =&gt; {
+            this.scene.start(&quot;Scene_play&quot;);
+        });
+        this.load.image(&quot;cancha&quot;, &quot;./assets/tenis.png&quot;);
+        this.load.image(&quot;ball&quot;, &quot;./assets/ball.png&quot;);
+        this.load.image(&quot;izquierda&quot;, &quot;./assets/left_pallete.png&quot;);
+        this.load.image(&quot;derecha&quot;, &quot;./assets/right_pallete.png&quot;);
+        this.load.image(&quot;separador&quot;, &quot;./assets/separator.png&quot;);
+        this.load.audio(&quot;rebote&quot;, [&quot;./assets/musica/Rebote.mp3&quot;,&quot;./assets/musica/Rebote.wav&quot;]);
+    }
+}
+export default Bootloader;
+</div></code></pre>
+<p>¿Qué vemos aquí?
+En este js tendremos la clase que se llamará Bootloader, y que se exiende a Phaser.Scene
+También vemos el preload que son todas las cosas que cargará antes de que comience el juego, como se ve, son las imágenes; finalmente este resultado se exporta como Bootloader.</p>
+<p>Ahora podremos trabajar con el init.js en el cuál pondremos el siguiente código</p>
+<pre class="hljs"><code><div>import Bootloader from './bootloader.js';
+import Scene_play from './scenes/scene_play.js';
+const config = {
+    width: 840,
+    height: 600,
+    parent: &quot;contenedor&quot;,
+    physics: {
+        default: &quot;arcade&quot;
+    },
+    scene: [
+        Bootloader,
+        Scene_play
+    ]
+}
+
+new Phaser.Game(config);
+</div></code></pre>
+<p>¿Qué vemos aquí?</p>
+<p>Bien, aquí podemos ver que se importan las clases (Bootloader y Scene_Play) y la ruta dónde están.
+Agregamos también una configuración de constante que nos da el tamaño del campo con las medidas que he puesto y el parent que viene a ser el div utilizado en el html; la escena se carga también aquí.</p>
+<p>Para poder hacer que funcione el juego debemos agregar las diferentes dinámicas, tanto en las palas como en el scene_play.</p>
+<p>Considero que tener la dinámica de las palas es bastante importante. Es un código relativamente sencillo:</p>
+<pre class="hljs"><code><div>class Palas extends Phaser.GameObjects.Sprite {
+    constructor(scene, x, y, type) {
+        super(scene, x, y, type);
+        scene.add.existing(this);
+        scene.physics.world.enable(this);
+        this.body.immovable = true;
+        this.body.setCollideWorldBounds(true);
+    }
+}
+export default Palas;
+</div></code></pre>
+<p>Se crea la clase palas extendido a un objeto con sprite, al construir, en escena se le da la opción de tener coordenadas, se le agrega una escena existente que viene a ser this (poco original pero sencillo), también la física del &quot;mundo&quot;, hacemos que cuando choquen contra ellas, pues rebote.</p>
+<p>Finalmente llega el meollo de la cuestión, es decir, el código más grande: Las escenas</p>
+<pre class="hljs"><code><div>import Palas from '../gameObjects/palas.js';
+class Scene_play extends Phaser.Scene {
+    constructor() {
+        super({key: &quot;Scene_play&quot;});
+    }
+
+    create() {
+        let center_width = this.sys.game.config.width/2;
+        let center_height = this.sys.game.config.height/2;
+
+        // Separador
+        this.add.image(center_width, center_height, &quot;separador&quot;);
+        this.add.image(center_width, center_height, &quot;cancha&quot;);
+    
+        // Palas
+        this.izquierda = new Palas(this, 30, center_height, &quot;izquierda&quot;);
+        this.derecha = new Palas(this, this.sys.game.config.width-30, center_height, &quot;derecha&quot;);
+        
+        // bola
+        this.physics.world.setBoundsCollision(false, false, true, true);
+        this.ball = this.physics.add.image(center_width, center_height, &quot;ball&quot;);
+        this.ball.setCollideWorldBounds(true);
+        this.ball.setBounce(1);
+        this.ball.setVelocityX(-180);
+
+        // Fisicas
+        this.physics.add.collider(this.ball, this.izquierda, this.chocaPala, null, this);
+        this.physics.add.collider(this.ball, this.derecha, this.chocaPala, null, this);
+
+        // Controles
+        // Pala derecha
+        this.cursor = this.input.keyboard.createCursorKeys();
+
+        // Pala izquierda
+        this.cursor_W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        this.cursor_S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+
+        // Sonido
+        let audio = this.sound.add(&quot;rebote&quot;);
+
+    }
+    update() {
+        if(this.ball.x &lt; 0 || this.ball.x &gt; this.sys.game.config.width) {
+            this.ball.setPosition(this.sys.game.config.width/2, this.sys.game.config.height/2);
+        }
+
+        // Control de las palas
+        // pala derecha
+        if(this.cursor.down.isDown) {
+            this.derecha.body.setVelocityY(300);
+        } else if(this.cursor.up.isDown) {
+            this.derecha.body.setVelocityY(-300);
+        } else {
+            this.derecha.body.setVelocityY(0);
+        }
+        // Pala izquierda
+        if(this.cursor_S.isDown) {
+            this.izquierda.body.setVelocityY(300);
+        } else if(this.cursor_W.isDown) {
+            this.izquierda.body.setVelocityY(-300);
+        } else {
+            this.izquierda.body.setVelocityY(0);
+        }
+
+
+    }
+
+    chocaPala() {
+        this.ball.setVelocityY(Phaser.Math.Between(-320, 320));
+    }
+}
+export default Scene_play;
+</div></code></pre>
+<p>Aquí importamos el objeto palas para poder ponerlas en su sitio, se crea la escena clase también con su clave.</p>
+<p>Realizamos la creación de los tamaños para que se pueda centrar y a partir de ahí colocar todos los objetos. Tenemos el separador que marcará justo el centro del campo (posteriormente he agregado el campo de tenis por cuestión estética).
+Las palas las agregamos con sus propias coordenadas dentro del juego, es decir, cada una en un lateral.</p>
+<p>Para trabajar con la pelota, se le añade una física para que pueda rebotar con las colisiones, ahí le agregamos la condición verdadera o falsa para que rebote en los lados superior e inferior y no rebote en los laterales. Obviamente también pondremos la imagen agregando que salga desde el centro. Para acabar le agregaremos una velocidad para las coordenadas X.</p>
+<p>En las físicas agregaremos las colisiones para con las palas.</p>
+<p>Ahora algo importante: Los controles</p>
+<pre class="hljs"><code><div>// Controles
+        // Pala derecha
+        this.cursor = this.input.keyboard.createCursorKeys();
+
+        // Pala izquierda
+        this.cursor_W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        this.cursor_S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+</div></code></pre>
+<p>Como se puede apreciar, la pala derecha se mueve con la cruceta mientras que la pala izquierda se ha agregado el control con la W y la S</p>
+<p>Y nos queda para poder acabar, el tema de las actualizaciones</p>
+<pre class="hljs"><code><div>update() {
+        if(this.ball.x &lt; 0 || this.ball.x &gt; this.sys.game.config.width) {
+            this.ball.setPosition(this.sys.game.config.width/2, this.sys.game.config.height/2);
+        }
+
+        // Control de las palas
+        // pala derecha
+        if(this.cursor.down.isDown) {
+            this.derecha.body.setVelocityY(300);
+        } else if(this.cursor.up.isDown) {
+            this.derecha.body.setVelocityY(-300);
+        } else {
+            this.derecha.body.setVelocityY(0);
+        }
+        // Pala izquierda
+        if(this.cursor_S.isDown) {
+            this.izquierda.body.setVelocityY(300);
+        } else if(this.cursor_W.isDown) {
+            this.izquierda.body.setVelocityY(-300);
+        } else {
+            this.izquierda.body.setVelocityY(0);
+        }
+
+
+    }
+
+    chocaPala() {
+        this.ball.setVelocityY(Phaser.Math.Between(-320, 320));
+    }
+}
+export default Scene_play;
+</div></code></pre>
+<p>Aquí trabajaremos con condiciones, empezando con la pelota en la que se pone la posición.
+Se continúa con el codigo de las palas en la que ponemos que si va hacia abajo en el eje Y usará una velocidad de 300 y lo mismo para subir, el mismo código se utiliza para la pala izquierda cambiando las flechas por la W y la S.</p>
+<p>Para finalizar pondremos una velocidad a la pelota una vez choque con la pala, ésta se dará mediante una fórmula matemática y la velocidad estará entre las dos que querramos.</p>
+<p>Nada más exportamos el código y tendremos nuestro pong acabado.</p>
+<p><img src="/home/tarde/Escritorio/proyecto_iaw/pong.png" alt="Pong"></p>
+<h1 id="snake">Snake</h1>
+<p>La estructura que usaré de carpetas será la siguiente:</p>
+<p><img src="/home/tarde/Escritorio/proyecto_iaw/estructuraSnake.png" alt="EstructuraSnake"></p>
+<p>Las imágenes empleadas serán:</p>
+<ul>
+<li>El cuerpo: <img src="snake-final/snake/assets/body.png" alt="Cuerpo"></li>
+<li>La comida: <img src="snake-final/snake/assets/food.png" alt="Comida"></li>
+<li>El Tablero: <img src="snake-final/snake/assets/tablero.png" alt="Tablero"></li>
+<li>La fuente: <img src="snake-final/snake/assets/font/font.png" alt="Fuente"></li>
+</ul>
+<p>Para trabajar con el Snake necesitaremos crear un html para él, se verá de la siguiente manera:</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Snake&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: #2c3e50;
+        }
+        #container {
+            margin-top: 130px;
+            transform: scale(2);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
+
+    &lt;script src=&quot;phaser.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./src/main.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<p>Tendrá lo mismo que el pong sin apenas cambios; quizá el cambio más radical sea en el script que en lugar de utilizar el phaser.js utilizo el phaser.min.js que es una versión un tanto más ligera que la otra.</p>
+<p>Para empezar podremos crear nuestro main.js de la siguiente manera:</p>
+<pre class="hljs"><code><div>import Bootloader from './bootloader.js';
+import Play from './scenes/play.js';
+import Gameover from './scenes/gameover.js';
+import UI from './scenes/UI.js';
+import Menu from './scenes/menu.js';
+
+const config = {
+    title: 'Snake',
+    width: 320,
+    height: 180,
+    type: Phaser.AUTO,
+    parent: 'container',
+    backgroundColor: '#000000',
+    pixelArt: true,
+    physics: {
+        default: &quot;arcade&quot;,
+        // arcade: {
+        //     gravity: { y: 100 }
+        // }
+    },
+    scene: [Bootloader, Play, Gameover, UI, Menu]
+};
+
+new Phaser.Game(config);
+</div></code></pre>
+<p>Las importaciones se van agregando conforme se hana los archivos js.
+Aquí lo importante en un principio va a ser importar el Bootloader que crearemos a continuación, la constante en la que le agregaremos la configuración de la pantalla y el nuevo juego phaser.</p>
+<p>Con el Bootloader haremos lo siguiente:</p>
+<pre class="hljs"><code><div>class Bootloader extends Phaser.Scene {
+    constructor() {
+        super('Bootloader');
+    }
+
+    preload() {
+        console.log('Soy Bootloader');
+        this.load.image('cuerpo', './assets/body.png');
+        this.load.image('comida', './assets/food.png');
+        this.load.image('tablero', './assets/tablero.png');
+
+        this.load.json('fontJSON', './assets/font/font.json');
+        this.load.image('font', './assets/font/font.png');
+
+        this.load.on('complete', () =&gt; {
+            const fontJSON = this.cache.json.get('fontJSON');
+            this.cache.bitmapFont.add('pixel', Phaser.GameObjects.RetroFont.Parse(this, fontJSON));
+
+            this.scene.start('Menu');
+        });
+        
+    }
+
+}
+
+export default Bootloader;
+</div></code></pre>
+<p>Se agrega la clase y se hace la precarga de las imagenes y la fuente (tipografía de letra), en la cual se hace un load.on para poder cargarla mediante un JSON.</p>
+<p>Le decimos también que la escena comenzará con el Menú, que será lo siguiente en crearse.</p>
+<pre class="hljs"><code><div>class Menu extends Phaser.Scene {
+    constructor() {
+        super('Menu');
+    }
+
+    preload() {
+        console.log('Soy Menu');
+    }
+
+    create() {
+        this.add.image(this.sys.game.config.width/2, this.sys.game.config.height/2 - 50, 'comida').setScale(6);
+        this.add.dynamicBitmapText(this.sys.game.config.width/2, this.sys.game.config.height/2
+            , 'pixel', 'SNAKE', 18).setOrigin(0.5);
+
+        const pressButton = this.add.dynamicBitmapText(this.sys.game.config.width/2, this.sys.game.config.height - 40
+            , 'pixel', 'PRESS ANY BUTTON', 8).setOrigin(0.5);
+    
+        this.tweens.add({
+            targets: pressButton,
+            alpha: 0,
+            ease: (x) =&gt; x &lt; 0.5 ? 0 : 1,
+            duration: 500,
+            yoyo: true,
+            repeat: -1
+        });
+        this.input.keyboard.on('keydown_RIGHT', () =&gt; {
+            this.scene.start('Play');
+        });
+        this.input.keyboard.on('keydown_LEFT', () =&gt; {
+            this.scene.start('Play');
+        });
+        this.input.keyboard.on('keydown_UP', () =&gt; {
+            this.scene.start('Play');
+        });
+        this.input.keyboard.on('keydown_DOWN', () =&gt; {
+            this.scene.start('Play');
+        });
+
+        this.input.keyboard.on('keydown_ENTER', () =&gt; {
+            this.scene.start('Play');
+        });
+        this.input.on('pointerdown', () =&gt; {
+            this.scene.start('Play');
+        })
+
+    }
+
+}
+
+export default Menu;
+</div></code></pre>
+<p>Aquí agregamos una pantalla de inicio en la que tanto con click de ratón como con alguna tecla de control de teclado se comenzará el juego. Aquí también añadimos la imagen de la comida como parte de la pantalla inicio y obviamente el nombre del juego en conjunto con que se presione la tecla (éste será intermitente).</p>
+<p><img src="/home/tarde/Escritorio/proyecto_iaw/snake.png" alt="Menú"></p>
+<p>Crearemos también una pantalla para el fin de juego (GameOver)</p>
+<p><img src="/home/tarde/Escritorio/proyecto_iaw/gameover.png" alt="Menú"></p>
+<p>Para lograr ésto, el código que emplearemos será el siguiente:</p>
+<pre class="hljs"><code><div>class Gameover extends Phaser.Scene {
+    constructor() {
+        super('Gameover');
+    }
+
+    preload() {
+        console.log('Soy Gameover');
+    }
+
+    create() {
+        this.scene.stop('UI');
+        this.add.dynamicBitmapText(this.sys.game.config.width/2, 
+            this.sys.game.config.height/2 - 30, 
+            'pixel', 'GAMEOVER', 20).setOrigin(0.5);
+        
+        this.evento = setTimeout(() =&gt; {
+            this.salirEscene();
+        }, 5000);
+        
+        this.input.keyboard.on('keydown_ENTER', () =&gt; {
+            this.salirEscene();
+        });
+        this.input.on('pointerdown', () =&gt; {
+            this.salirEscene();
+        })
+    }
+
+    salirEscene() {
+        clearTimeout(this.evento);
+        this.scene.start('Menu');
+    }
+
+}
+
+export default Gameover;
+</div></code></pre>
+<p>Se crea la clase del gameover.
+Dentro del create se para la escena UI (que veremos al final) y se agregará el texto con la fuente que teníamos. El evento dura una cantidad de tiempo reducida o hasta que presiones enter o un click de ratón, esta se exporta como Gameover para agregar posteriormente al bootloader.js</p>
+<p>Ahora haremos la parte de juego:</p>
+<pre class="hljs"><code><div>import Snake from '../gameobjects/Snake.js';
+import Comida from '../gameobjects/Comida.js';
+
+class Play extends Phaser.Scene {
+    constructor() {
+        super('Play');
+    }
+
+    preload() {
+        console.log('Escena play');
+        this.snake = new Snake(this);
+        this.comida = new Comida(this);
+    }
+    create() {
+        
+        this.scene.launch('UI');
+        const sceneUI = this.scene.get('UI');
+
+        this.input.keyboard.on('keydown_RIGHT', () =&gt; {
+            this.snake.changeMov('derecha');
+        });
+        this.input.keyboard.on('keydown_LEFT', () =&gt; {
+            this.snake.changeMov('izquierda');
+        });
+        this.input.keyboard.on('keydown_UP', () =&gt; {
+            this.snake.changeMov('arriba');
+        });
+        this.input.keyboard.on('keydown_DOWN', () =&gt; {
+            this.snake.changeMov('abajo');
+        });
+
+        // Colision de cabeza con comida
+        this.physics.add.collider(this.snake.cuerpo[0], this.comida.comida, () =&gt; {
+            this.comida.crearComida();
+            this.snake.crece();
+            sceneUI.addPoint();
+        });
+    }
+    update(time) {
+        this.snake.update(time);
+    }
+}
+
+export default Play;
+</div></code></pre>
+<p>Esta parte de juego tendrá el movimiento de nuestra serpiente con las flechas, también tiene la escena para la UI en la que se agregarán los puntos, no obstante lo veremos a continuación.
+Aquí es dónde importaremos la comida y el cuerpo de la serpiente y se precarga. Agregamos la física de colisión, es decir, cuando la cabeza choca con la comida, la serpiente crece un cuadro además de agregar puntos.</p>
+<p>Ahora trabajamos con los puntos:</p>
+<pre class="hljs"><code><div>class UI extends Phaser.Scene {
+    constructor() {
+        super('UI');
+    }
+
+    preload() {
+        console.log('Soy UI');
+    }
+    
+    create() {
+        this.add.image(0, 0, 'tablero').setOrigin(0);
+        this.add.dynamicBitmapText(10, 7, 'pixel', 'PUNTOS', 8);
+        this.puntos = this.add.dynamicBitmapText(this.sys.game.config.width - 60, 7, 'pixel', Phaser.Utils.String.Pad(0, 6, 0, 1), 8);
+    }
+    addPoint() {
+        this.puntos.setText(
+            Phaser.Utils.String.Pad(parseInt(this.puntos.text) + 10, 6, 0, 1)
+        );
+    }
+
+}
+
+export default UI;
+</div></code></pre>
+<p>Aquí estambleceremos una imagen dentro del tablero que creamos en la que añadimos un texto con los puntos, para poder agregar los puntos se hace un cálculo matemático y se establece que sea un número en lugar de texto.</p>
+<p>Obviamente la serpiente no crecerá sola, aquí entran los gameobjects.</p>
+<p>Primero haremos la comida</p>
+<pre class="hljs"><code><div>class Comida {
+    constructor(scene) {
+        this.scene = scene;
+        
+        this.comida = this.scene.physics.add.group({
+            key: 'comida',
+            setXY: {
+                x: 30,
+                y: 30
+            }
+        });
+        
+        this.comida.getChildren()[0].setOrigin(0).setDepth(-1);
+    }
+
+    crearComida() {
+        let x = Phaser.Math.Between(30, this.scene.sys.game.config.width - 30);
+        let y = Phaser.Math.Between(30, this.scene.sys.game.config.height - 30);
+        
+        x = Phaser.Math.Snap.To(x, 10);
+        y = Phaser.Math.Snap.To(y, 10);
+        
+        this.comida.getChildren()[0].destroy();
+        this.comida.create(x, y, 'comida');
+        this.comida.getChildren()[0].setOrigin(0).setDepth(-1);
+    }
+}
+
+export default Comida;
+</div></code></pre>
+<p>Esta frutita naranja se creará de forma random entre unas coordenadas situadas entre 30 y -30</p>
+<p>Finalmente la serpiente que es lo que puede llevar algo más de trabajo</p>
+<pre class="hljs"><code><div>class Snake {
+    constructor(scene) {
+        this.scene = scene;
+        this.cuerpo = [];
+        this.dir = 'izquierda';
+        this.timmer = 0;
+        this.oldDir = 'derecha';
+
+        // genera cuerpo
+        for (let i = 0; i &lt; 3; i++) {
+            this.cuerpo.push(
+                this.scene.physics.add.image(100 + i * 10, 100, 'cuerpo')
+                .setOrigin(0)
+            );
+        }
+
+        // genera colisiones
+        for (let i = 1; i &lt; 10; i++) {
+                this.scene.physics.add.collider(this.cuerpo[0], this.cuerpo[i], () =&gt; this.choca());
+        }
+    }
+    crece() {
+        const obj = this.cuerpo[this.cuerpo.length-1];
+        const newObj = this.scene.physics.add.image(obj.x, obj.y, 'cuerpo').setOrigin(0);
+        this.cuerpo.push(newObj);
+        this.scene.physics.add.collider(this.cuerpo[0], newObj, () =&gt; this.choca());
+    }
+    choca() {
+        this.scene.scene.start('Gameover');
+    }
+    changeMov(dir) {
+        if (this.oldDir != dir) {
+            this.dir = dir;
+        }
+    }
+    update(time) {
+        if (time &gt; this.timmer) {
+
+            for (let i = this.cuerpo.length - 1; i &gt; 0; i--) {
+                this.cuerpo[i].x = this.cuerpo[i - 1].x;
+                this.cuerpo[i].y = this.cuerpo[i - 1].y;
+
+                this.cuerpo[this.cuerpo.length - 1 - i].x = Phaser.Math.Wrap(this.cuerpo[this.cuerpo.length - 1 - i].x,
+                    0,
+                    this.scene.sys.game.config.width);
+
+                this.cuerpo[this.cuerpo.length - 1 - i].y = Phaser.Math.Wrap(this.cuerpo[this.cuerpo.length - 1 - i].y,
+                    20,
+                    this.scene.sys.game.config.height);
+
+            }
+
+            switch (this.dir) {
+                case 'derecha':
+                    this.cuerpo[0].x += 10;
+                    this.oldDir = 'izquierda';
+                    break;
+                case 'izquierda':
+                    this.cuerpo[0].x -= 10;
+                    this.oldDir = 'derecha';
+                    break;
+                case 'arriba':
+                    this.cuerpo[0].y -= 10;
+                    this.oldDir = 'abajo';
+                    break;
+                case 'abajo':
+                    this.cuerpo[0].y += 10;
+                    this.oldDir = 'arriba';
+                    break;
+            }
+            this.timmer = time + 150;
+        }
+    }
+}
+export default Snake;
+</div></code></pre>
+<p>Aquí tendrá el movimiento además de la generación de cuerpo cada vez que choca contra una fruta, no obstante si choca contra ella misma saltará la escena del Gameover que vimos anteriormente.</p>
+<p>Aquí acaba el snake.</p>
+<p>Como he decidido subirlo a GitHub, he agregado una página que funcionará como índex en la que he puesto ambos juegos.</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;style&gt;
+    h1 {
+        text-align: center;
+        text-decoration: aquamarine;
+        font-size: 50px;
+        text-decoration-line: underline;
+        color:lavender;
+    }
+    html {
+        background: url(fondo.jpg) no-repeat center center fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+}
+.neon { 
+font-size: 50px; 
+letter-spacing:-2px; 
+color: #fff; 
+text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 25px #ff00de; 
+-webkit-text-fill-color: #F4ECFF; 
+-webkit-text-stroke-color:#C546F7; 
+-webkit-text-stroke-width:0.2px; 
+-moz-text-fill-color: #F4ECFF; 
+-moz-text-stroke-color:#C546F7; 
+-moz-text-stroke-width:0.2px; 
+} 
+    &lt;/style&gt;
+    &lt;title&gt;Juegos&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 class=&quot;neon&quot;&gt;Elige el juego que deseas probar&lt;/h1&gt;
+    &lt;a title=&quot;Snake&quot; href=&quot;https://zarkxworld.github.io/snake/&quot;&gt;&lt;img src=&quot;snake.png&quot; /&gt;&lt;/a&gt;
+    &lt;a title=&quot;Pong&quot; href=&quot;pong.html&quot;&gt;&lt;img src=&quot;pong.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<p>El código es sencillo, un simple html al que le he agregado algo de estilo, un h1 para título y dos enlaces a los juegos (funciona al clickear la imagen).</p>
+<p>Este index está en la misma zona que el pong por eso el pong es un enlace a la misma carpeta, no obstante el Snake va directamente a otra página dado que lo he subido de forma independiente.</p>
+<p>Para acabar subiremos nuestro proyecto a GitHub y lo pondremos en funcionamiento.</p>
+<p><a href="https://zarkxworld.github.io/minijuego/">Prueba los juegos</a></p>
+<p><img src="/home/tarde/Escritorio/proyecto_iaw/final.png" alt="final"></p>
+
+</body>
+</html>
